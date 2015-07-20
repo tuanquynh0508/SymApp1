@@ -1,0 +1,10 @@
+{% extends "TuanQuynhAdminBundle::layout.html.twig" %}
+
+{% block content %}
+	{# PAGE TITLE #}
+    {% include 'TuanQuynhAdminBundle:Partial:page_title.html.twig' with {'title': 'Profile'} %}
+
+	<div class="wrapper wrapper-content">
+		{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+	</div><!-- /.wrapper-content -->
+{% endblock content %}

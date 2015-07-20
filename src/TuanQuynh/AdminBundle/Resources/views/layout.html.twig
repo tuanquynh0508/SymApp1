@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>{% block title %}Dashboard Page{% endblock %}</title>
+        {# CSS BLOCK #}
+        {% include 'TuanQuynhAdminBundle:Partial:css.html.twig' %}
+        {% block stylesheets %}{% endblock %}
+    </head>
+
+    <body class="boxed-layout fixed-sidebar pace-done">
+        <div id="wrapper">
+
+            {# NAVIGATION #}
+            {% include 'TuanQuynhAdminBundle:Partial:navigator.html.twig' %}
+
+            <div id="page-wrapper" class="gray-bg">
+
+                {# SEARCH BAR #}
+                {% include 'TuanQuynhAdminBundle:Partial:search_bar.html.twig' %}
+
+                {% block content %}{% endblock content %}
+
+                {# PAGE FOOTER #}
+                {% include 'TuanQuynhAdminBundle:Partial:footer.html.twig' %}
+
+            </div><!-- /#page-wrapper -->
+        </div><!-- /#wrapper -->
+
+        {# JAVASCRIPT BLOCK #}
+        {% include 'TuanQuynhAdminBundle:Partial:js.html.twig' %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

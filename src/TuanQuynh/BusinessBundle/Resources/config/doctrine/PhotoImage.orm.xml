@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="TuanQuynh\BusinessBundle\Entity\PhotoImage" table="photo_image">
+    <indexes>
+      <index name="photo_album_id" columns="photo_album_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="file" type="string" column="file" length="255" nullable="false"/>
+    <field name="metaData" type="text" column="meta_data" nullable="true"/>
+    <field name="note" type="text" column="note" nullable="true"/>
+    <field name="isActive" type="boolean" column="is_active" nullable="true"/>
+    <field name="createdAt" type="datetime" column="created_at" nullable="true"/>
+    <field name="updatedAt" type="datetime" column="updated_at" nullable="true"/>
+    <many-to-one field="photoAlbum" target-entity="PhotoAlbum">
+      <join-columns>
+        <join-column name="photo_album_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

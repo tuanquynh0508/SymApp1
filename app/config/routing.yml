@@ -1,0 +1,17 @@
+tuan_quynh_admin:
+    resource: "@TuanQuynhAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+tuan_quynh_home:
+    resource: "@TuanQuynhHomeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+tuan_quynh_user:
+    resource: "@TuanQuynhUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -1,0 +1,40 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+            <img src="{{ asset('dashboard/img/login.png') }}" alt="Symfony 2" />
+        </div>
+
+        {% if error %}
+        <div class="alert alert-danger alert-dismissable text-left">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+        {% endif %}
+
+        <form action="{{ path("fos_user_security_check") }}" method="post" class="m-t" role="form">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="{{ 'security.login.username'|trans }}" id="username" name="_username" value="{{ last_username }}" value="" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="{{ 'security.login.password'|trans }}" id="password" name="_password" value="123456" required="required">
+            </div>
+
+            <div class="form-group text-left">
+              <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="i-checks" />
+              <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary block full-width m-b">{{ 'security.login.submit'|trans }}</button>
+
+            <a href="{{ path('fos_user_resetting_request') }}"><small>Forgot password?</small></a>
+        </form>
+        <p class="m-t"> <small>&copy; 2014 <a href="http://i-designer.net" target="_blank">I-Designer</a></small> </p>
+    </div>
+</div>
+{% endblock fos_user_content %}
