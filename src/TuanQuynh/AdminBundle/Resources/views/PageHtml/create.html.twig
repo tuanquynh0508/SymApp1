@@ -15,11 +15,11 @@ var switchery = new Switchery(elem, { color: '#1AB394' });
 
 {% block content %}
     {# PAGE TITLE #}
-    {% include 'TuanQuynhAdminBundle:Partial:page_title.html.twig' with {'title': 'Create Page Html'} %}
+    {% include 'TuanQuynhAdminBundle:Partial:page_title.html.twig' with {'title': 'Page HTML'|trans } %}
 
     <div class="wrapper wrapper-content">
 
-        {% include 'TuanQuynhAdminBundle:PageHtml:pagehtml_form.html.twig' with {'form': form} %}
+        {% include 'TuanQuynhAdminBundle:PageHtml:pagehtml_form.html.twig' with {'form': form, 'title': 'Add new page'|trans} %}
 
     </div><!-- /.wrapper-content -->
 {% endblock content %}

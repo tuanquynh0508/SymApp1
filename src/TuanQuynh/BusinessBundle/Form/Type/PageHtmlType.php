@@ -17,9 +17,9 @@ class PageHtmlType extends BaseFormType
     {
         $builder
             ->add('title')
-            ->add('slug')
+            ->add('slug', 'text', array('attr'=>array('help'=>'Show in url for friendly url')))
             ->add('content')
-            ->add('isActive')
+            ->add('isActive', 'checkbox', array('data' => true))
             ->add('save', 'submit')
         ;
     }
