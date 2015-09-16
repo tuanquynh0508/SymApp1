@@ -1,0 +1,25 @@
+{% extends "TuanQuynhAdminBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+<link href="/dashboard/css/plugins/switchery/switchery.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+<!-- Switchery -->
+<script src="/dashboard/js/plugins/switchery/switchery.js"></script>
+<script>
+var elem = document.querySelector('.js-switch');
+var switchery = new Switchery(elem, { color: '#1AB394' });
+</script>
+{% endblock %}
+
+{% block content %}
+    {# PAGE TITLE #}
+    {% include 'TuanQuynhAdminBundle:Partial:page_title.html.twig' with {'title': 'Page HTML'|trans } %}
+
+    <div class="wrapper wrapper-content">
+
+        {% include 'TuanQuynhAdminBundle:PageHtml:pagehtml_form.html.twig' with {'form': form, 'title': 'Edit page'|trans} %}
+
+    </div><!-- /.wrapper-content -->
+{% endblock content %}

@@ -2,12 +2,11 @@
 
 namespace TuanQuynh\BusinessBundle\Form\Type;
 
-use TuanQuynh\BusinessBundle\Form\Type\BaseFormType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PageHtmlType extends BaseFormType
+class PageHtmlType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder

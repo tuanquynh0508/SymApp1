@@ -3,7 +3,7 @@ parameters:
     business.repository.page_html.class: TuanQuynh\BusinessBundle\Repository\PageHtmlRepository
 
     # FORM TYPE
-    business.form.type.page_html.class: TuanQuynh\BusinessBundle\Form\Type\PageHtmlType
+    # business.form.type.page_html.class: TuanQuynh\BusinessBundle\Form\Type\PageHtmlType
 
     tuanquynh.business_bundle: TuanQuynhBusinessBundle
 
@@ -14,8 +14,8 @@ services:
         arguments: ["@doctrine.orm.entity_manager", %tuanquynh.business_bundle%]
 
     # FORM TYPE
-    business.form.type.page_html:
-        class: %business.form.type.page_html.class%
-        arguments: ["@service_container"]
-        tags:
-            - { name: form.type, alias: businessbundle_pagehtml }
+    # business.form.type.page_html:
+    #     class: %business.form.type.page_html.class%
+    #     arguments: ["@service_container"]
+    #     tags:
+    #         - { name: form.type, alias: businessbundle_pagehtml }

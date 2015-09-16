@@ -34,5 +34,14 @@
         {# JAVASCRIPT BLOCK #}
         {% include 'TuanQuynhAdminBundle:Partial:js.html.twig' %}
         {% block javascripts %}{% endblock %}
+
+        <script>
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                toastr.{{ label }}('{{ flash }}');
+            {% endfor %}
+        {% endfor %}
+        </script>
+
     </body>
 </html>
