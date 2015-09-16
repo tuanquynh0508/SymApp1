@@ -60,6 +60,14 @@ class PageHtml
      */
     private $id;
 
+    /**
+     * __construct
+     * {@inheritdoc }
+     */
+    public function __construct()
+    {
+        $this->isActive = true;
+    }
 
     /**
      * Set title

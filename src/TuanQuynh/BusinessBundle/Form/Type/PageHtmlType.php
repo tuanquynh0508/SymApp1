@@ -17,8 +17,8 @@ class PageHtmlType extends AbstractType
         $builder
             ->add('title')
             ->add('slug', 'text', array('attr'=>array('help'=>'Show in url for friendly url')))
-            ->add('content')
-            ->add('isActive', 'checkbox', array('data' => true))
+            ->add('content', 'textarea', array('required' => true))
+            ->add('isActive', 'checkbox', array('required' => false))
             ->add('save', 'submit')
         ;
     }
