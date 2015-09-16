@@ -37,7 +37,8 @@ class PageHtmlController extends Controller
      */
     public function createAction(Request $request)
     {
-        $form = $this->createForm(new PageHtmlType());
+		$oPageHtml = new PageHtml();
+        $form = $this->createForm(new PageHtmlType(), $oPageHtml);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -49,12 +50,15 @@ class PageHtmlController extends Controller
                 $pageHtmlRepository = $this->get('business.repository.page_html');
                 $pageHtmlRepository->persistAndFlush($oPageHtml);
 
-                $request->getSession()->getFlashBag()->add('success', 'Add OKI');
+                $request->getSession()->getFlashBag()->add('success', 'Create record successful');
                 return $this->redirect($this->generateUrl('tuanquynh_admin_pagehtml_edit', array('id' => $oPageHtml->getId())));
             }
         }
 
-        return array('form' => $form->createView());
+        return array(
+			'entity' => $oPageHtml,
+			'form' => $form->createView()
+		);
     }
 
     /**
@@ -81,11 +85,14 @@ class PageHtmlController extends Controller
 
                 $pageHtmlRepository->persistAndFlush($oPageHtml);
 
-                $request->getSession()->getFlashBag()->add('success', 'Edit OKI');
+                $request->getSession()->getFlashBag()->add('success', 'Update record with id '.$oPageHtml->getId().' successful');
                 return $this->redirect($this->generateUrl('tuanquynh_admin_pagehtml_edit', array('id' => $oPageHtml->getId())));
             }
         }
 
-        return array('form' => $form->createView());
+        return array(
+			'entity' => $oPageHtml,
+			'form' => $form->createView()
+		);
     }
 }
