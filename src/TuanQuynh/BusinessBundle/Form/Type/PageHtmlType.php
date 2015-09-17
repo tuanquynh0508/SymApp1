@@ -15,7 +15,7 @@ class PageHtmlType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('title', null, array('attr' => array('autofocus' => true)))
             ->add('slug', 'text', array('attr'=>array('help'=>'Show in url for friendly url')))
             ->add('content', 'textarea', array('required' => true))
             ->add('isActive', 'checkbox', array('required' => false))

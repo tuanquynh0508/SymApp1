@@ -26,8 +26,11 @@ class PageHtmlController extends Controller
     public function indexAction()
     {
     	$pageHtmlRepository = $this->get('business.repository.page_html');
-        $list = $pageHtmlRepository->findAll();
-        return array();
+
+        $paginator = $pageHtmlRepository->getAllByPaginator();
+        $paginator->setContainer($this->container);
+
+        return array('paginator' => $paginator);
     }
 
     /**
@@ -94,5 +97,23 @@ class PageHtmlController extends Controller
 			'entity' => $oPageHtml,
 			'form' => $form->createView()
 		);
+    }
+
+    /**
+     * @Route("/delete/{id}", requirements={"id" = "\d+"})
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $pageHtmlRepository = $this->get('business.repository.page_html');
+        $oPageHtml = $pageHtmlRepository->findOneById($id);
+        if(null === $oPageHtml) {
+            throw new HttpException(404, 'Record with id '.$id.' is not found');
+        }
+
+        $pageHtmlRepository->removeAndFlush($oPageHtml);
+        $request->getSession()->getFlashBag()->add('warning', 'Delete record with id '.$id.' successful');
+        return $this->redirect($this->generateUrl('tuanquynh_admin_pagehtml_index'));
     }
 }

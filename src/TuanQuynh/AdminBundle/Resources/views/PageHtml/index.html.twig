@@ -31,60 +31,36 @@
 	                <thead>
 		                <tr>
 		                    <th width="5%">#</th>
-		                    <th width="40%">Title</th>
-		                    <th width="40%">Slug</th>
-		                    <th width="5%">Active</th>
-		                    <th width="10%">Actions</th>
+		                    <th width="40%">{{ 'Title'|trans }}</th>
+		                    <th width="40%">{{ 'Slug'|trans }}</th>
+		                    <th width="5%" class="text-center">{{ 'Active'|trans }}</th>
+		                    <th width="10%" class="text-center">{{ 'Actions'|trans }}</th>
 		                </tr>
 	                </thead>
 	                <tbody>
+                        {% for record in paginator %}
 		                <tr class="gradeX">
-		                    <td>Trident</td>
-		                    <td>Internet
-		                        Explorer 4.0
-		                    </td>
-		                    <td>Win 95+</td>
-		                    <td class="center">4</td>
-		                    <td class="center">X</td>
+		                    <td>{{ record.id }}</td>
+		                    <td>{{ record.title }}</td>
+		                    <td>{{ record.slug }}</td>
+		                    <td class="text-center">
+                                {% if record.isActive == 1 %}
+                                <i class="fa fa-check-circle text-success"></i>
+                                {% else %}
+                                <i class="fa fa-circle text-default"></i>
+                                {% endif %}
+                            </td>
+		                    <td class="text-center">
+                                <a href="{{ path('tuanquynh_admin_pagehtml_edit', {'id': record.id }) }}" title="{{ 'Edit'|trans }}" class=""><i class="fa fa-pencil"></i></a>
+                                &nbsp;
+                                <a href="{{ path('tuanquynh_admin_pagehtml_delete', {'id': record.id }) }}" title="{{ 'Delete'|trans }}" class="text-danger btn-link-delete"><i class="fa fa-trash"></i></a>
+                            </td>
 		                </tr>
-		                <tr class="gradeC">
-		                    <td>Trident</td>
-		                    <td>Internet
-		                        Explorer 5.0
-		                    </td>
-		                    <td>Win 95+</td>
-		                    <td class="center">5</td>
-		                    <td class="center">C</td>
-		                </tr>
-		                <tr class="gradeA">
-		                    <td>Trident</td>
-		                    <td>Internet
-		                        Explorer 5.5
-		                    </td>
-		                    <td>Win 95+</td>
-		                    <td class="center">5.5</td>
-		                    <td class="center">A</td>
-		                </tr>
+                        {% endfor %}
 	                </tbody>
                 </table>
 
-                <div class="row">
-		            <div class="col-lg-6">
-		            	Showing 1 to 10 of 57 entries
-		            </div>
-		            <div class="col-lg-6">
-		            	<ul class="pagination pull-right" style="margin: 0px;">
-						    <li class="paginate_button previous disabled" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_previous"><a href="#">Previous</a></li>
-						    <li class="paginate_button active" aria-controls="DataTables_Table_0" tabindex="0"><a href="#">1</a></li>
-						    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0"><a href="#">2</a></li>
-						    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0"><a href="#">3</a></li>
-						    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0"><a href="#">4</a></li>
-						    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0"><a href="#">5</a></li>
-						    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0"><a href="#">6</a></li>
-						    <li class="paginate_button next" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_next"><a href="#">Next</a></li>
-						</ul>
-		            </div>
-		        </div>
+                {{ paginator.renderLinks()|raw }}
 
                 </div>
             </div>
