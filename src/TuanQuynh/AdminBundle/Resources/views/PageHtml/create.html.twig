@@ -1,15 +1,23 @@
 {% extends "TuanQuynhAdminBundle::layout.html.twig" %}
 
 {% block stylesheets %}
+<!-- Switchery -->
 <link href="/dashboard/css/plugins/switchery/switchery.css" rel="stylesheet">
+<!-- SUMMERNOTE -->
+<link href="/dashboard/css/plugins/summernote/summernote.css" rel="stylesheet">
+<link href="/dashboard/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
 <!-- Switchery -->
 <script src="/dashboard/js/plugins/switchery/switchery.js"></script>
+<!-- SUMMERNOTE -->
+<script src="/dashboard/js/plugins/summernote/summernote.min.js"></script>
 <script>
 var elem = document.querySelector('.js-switch');
 var switchery = new Switchery(elem, { color: '#1AB394' });
+
+$('.summernote').summernote();
 </script>
 {% endblock %}
 

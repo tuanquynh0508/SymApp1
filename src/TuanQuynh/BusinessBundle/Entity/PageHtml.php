@@ -28,7 +28,7 @@ class PageHtml
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Assert\NotBlank
      */
     private $slug;
